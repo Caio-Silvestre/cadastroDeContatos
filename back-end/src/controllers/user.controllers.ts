@@ -1,28 +1,36 @@
 import { Request, Response } from "express";
-import { IUserRequest } from "../interfaces/user.interface";
+import { User } from "../entities/user.entity";
+import { IUserRequest, IUserUpdateRequest } from "../interfaces/user.interface";
 import createUserService from "../services/user/createUser.service";
+import lisUserService from "../services/user/listUser.service";
+import updateUserService from "../services/user/updateUser.service";
 // =========================IMPORTS=================================================
 
-const createUserController = (req:Request, res:Response) => {
-    try {
+const createUserController = async (req:Request, res:Response) => {
+
         const user: IUserRequest = req.body;
-        const createdUser = createUserService(user)
+        const createdUser = await createUserService(user)
         return res.status(200).json(createdUser)
-    } catch (error) {
-        if (error instanceof Error) {
-            return res.status(400).json({
-                message: error.message
-            });
-        }
-    }
+    
 }
 
-const listUserController = (req:Request, res:Response) => {}
+const listUserController = async (req:Request, res:Response) => {
+    const users = await lisUserService()
+    return res.json(users)
+}
 
 const retrieveUserController = (req:Request, res:Response) =>{}
+    
 
-const updateUserController = (req:Request, res:Response) => {}
+const updateUserController = async (req:Request, res:Response) => {
+        const user: IUserUpdateRequest = req.body;
+        const id:string = req.params.id
+        const updatedUser = await updateUserService(user,id)
+        return res.json(updatedUser)
+    }
 
-const delteUserController = (req:Request, res:Response) => {}
+const delteUserController = (req:Request, res:Response) => {
+    
+}
 
 export {createUserController ,listUserController, updateUserController, delteUserController, retrieveUserController}

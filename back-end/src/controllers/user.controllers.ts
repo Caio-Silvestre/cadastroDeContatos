@@ -2,7 +2,9 @@ import { Request, Response } from "express";
 import { User } from "../entities/user.entity";
 import { IUserRequest, IUserUpdateRequest } from "../interfaces/user.interface";
 import createUserService from "../services/user/createUser.service";
+import deleteUserService from "../services/user/deleteUser.service";
 import lisUserService from "../services/user/listUser.service";
+import retrieveUserService from "../services/user/retrieveUser.service";
 import updateUserService from "../services/user/updateUser.service";
 // =========================IMPORTS=================================================
 
@@ -19,7 +21,11 @@ const listUserController = async (req:Request, res:Response) => {
     return res.json(users)
 }
 
-const retrieveUserController = (req:Request, res:Response) =>{}
+const retrieveUserController = async (req:Request, res:Response) =>{
+    const id: string = req.params.id
+    const user = await retrieveUserService(id)
+    return res.json(user)
+}
     
 
 const updateUserController = async (req:Request, res:Response) => {
@@ -29,8 +35,10 @@ const updateUserController = async (req:Request, res:Response) => {
         return res.json(updatedUser)
     }
 
-const delteUserController = (req:Request, res:Response) => {
-    
+const delteUserController = async (req:Request, res:Response) => {
+    const id = req.params.id
+    await deleteUserService(id)
+    return res.status(204).send()
 }
 
 export {createUserController ,listUserController, updateUserController, delteUserController, retrieveUserController}

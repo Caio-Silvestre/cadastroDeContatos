@@ -3,7 +3,7 @@ import { User } from "../entities/user.entity";
 import { IUserRequest, IUserUpdateRequest } from "../interfaces/user.interface";
 import createUserService from "../services/user/createUser.service";
 import deleteUserService from "../services/user/deleteUser.service";
-import lisUserService from "../services/user/listUser.service";
+import listUserService from "../services/user/listUser.service";
 import retrieveUserService from "../services/user/retrieveUser.service";
 import updateUserService from "../services/user/updateUser.service";
 // =========================IMPORTS=================================================
@@ -17,13 +17,15 @@ const createUserController = async (req:Request, res:Response) => {
 }
 
 const listUserController = async (req:Request, res:Response) => {
-    const users = await lisUserService()
+    const users = await listUserService()
     return res.json(users)
 }
 
 const retrieveUserController = async (req:Request, res:Response) =>{
     const id: string = req.params.id
+    
     const user = await retrieveUserService(id)
+    
     return res.json(user)
 }
     

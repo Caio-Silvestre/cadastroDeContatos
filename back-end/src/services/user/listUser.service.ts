@@ -5,7 +5,7 @@ import { User } from "../../entities/user.entity"
 // =========================IMPORTS=================================================
 
 
-const lisUserService = async (): Promise<User[]> => {
+const listUserService = async (): Promise<User[]> => {
     const userRepository = AppDataSource.getRepository(User)
 
     const users = await userRepository.find()
@@ -13,4 +13,4 @@ const lisUserService = async (): Promise<User[]> => {
     return users
 }
 
-export default lisUserService
+export default listUserService

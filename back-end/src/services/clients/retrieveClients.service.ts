@@ -6,6 +6,8 @@ import { Client } from "../../entities/clients.entity"
 const retrieveClientsService =  async (id:string): Promise<Client> => {
         const clientRepository = AppDataSource.getRepository(Client)
         const client = await clientRepository.findOneBy({id})
+        
+        
 
         return client!
     }

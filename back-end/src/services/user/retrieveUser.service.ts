@@ -5,8 +5,8 @@ import { User } from "../../entities/user.entity"
 
 const retrieveUserService = async (id:string): Promise<User> =>{
     const userRepository = AppDataSource.getRepository(User)
+        
         const user = await userRepository.findOneBy({id})
-
         return user!
 }
 

@@ -8,9 +8,9 @@ const clientsRoutes = Router();
 
 clientsRoutes.post("",ensureAuthMiddleware ,createClientsController)
 clientsRoutes.get("", ensureAuthMiddleware,listClientsController)
-clientsRoutes.get(":/id",ensureAuthMiddleware ,retrieveClientsController)
-clientsRoutes.delete(":/id",ensureAuthMiddleware ,delteClientsController)
-clientsRoutes.patch(":/id",ensureAuthMiddleware, updateClientsController)
+clientsRoutes.get("/:id",ensureAuthMiddleware ,retrieveClientsController)
+clientsRoutes.delete("/:id",ensureAuthMiddleware ,delteClientsController)
+clientsRoutes.patch("/:id",ensureAuthMiddleware, updateClientsController)
 
 
 

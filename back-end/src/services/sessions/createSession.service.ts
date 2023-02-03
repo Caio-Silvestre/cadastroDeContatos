@@ -21,8 +21,9 @@ const createSessionsService =async ({email, password}: ISessionRequest): Promise
     }
     const token = jwt.sign({
         name: user.name,
+        id: user.id,
     },
-    process.env.SECRET_KEY as string,
+    "senhaFOrteDemais1234@@@",
     {
         expiresIn: '24h',
         subject: user.id

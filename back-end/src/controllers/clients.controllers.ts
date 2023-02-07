@@ -18,7 +18,8 @@ const createClientsController = async (req:Request, res:Response) => {
 }
 
 const listClientsController = async (req:Request, res:Response) => {
-    const clients = await lisClientsService()
+    const userId: string = req.user.id
+    const clients = await lisClientsService(userId)
     return res.json(clients)
 }
 

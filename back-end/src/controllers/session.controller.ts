@@ -7,6 +7,6 @@ import createSessionsService from "../services/sessions/createSession.service";
 const createSessionController =async (req: Request, res:Response) => {    
     const data : ISessionRequest = req.body
     const token = await createSessionsService(data)
-    return res.json(token)
+    return res.json({token})
     }
 export {createSessionController}

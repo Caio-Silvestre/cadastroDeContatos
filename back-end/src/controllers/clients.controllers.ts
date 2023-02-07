@@ -14,7 +14,7 @@ const createClientsController = async (req:Request, res:Response) => {
     const userId: string = req.user.id
     
     const createdClient = await createClientsService(client, userId)
-    return res.status(200).json(createdClient)
+    return res.status(201).json(createdClient)
 }
 
 const listClientsController = async (req:Request, res:Response) => {

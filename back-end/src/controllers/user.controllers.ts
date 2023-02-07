@@ -12,7 +12,7 @@ const createUserController = async (req:Request, res:Response) => {
 
         const user: IUserRequest = req.body;
         const createdUser = await createUserService(user)
-        return res.status(200).json(createdUser)
+        return res.status(201).json(createdUser)
     
 }
 
@@ -22,9 +22,9 @@ const listUserController = async (req:Request, res:Response) => {
 }
 
 const retrieveUserController = async (req:Request, res:Response) =>{
-    const id: string = req.params.id
+    const userId: string = req.user.id
     
-    const user = await retrieveUserService(id)
+    const user = await retrieveUserService(userId)
     
     return res.json(user)
 }
@@ -32,15 +32,15 @@ const retrieveUserController = async (req:Request, res:Response) =>{
 
 const updateUserController = async (req:Request, res:Response) => {
         const user: IUserUpdateRequest = req.body;
-        const id:string = req.params.id
-        const updatedUser = await updateUserService(user,id)
+        const userId: string = req.user.id
+        const updatedUser = await updateUserService(user,userId)
         return res.json(updatedUser)
     }
 
 const delteUserController = async (req:Request, res:Response) => {
-    const id = req.params.id
-    await deleteUserService(id)
-    return res.status(204).send()
+    const userId: string = req.user.id
+    await deleteUserService(userId)
+    return res.status(204).send();
 }
 
 export {createUserController ,listUserController, updateUserController, delteUserController, retrieveUserController}

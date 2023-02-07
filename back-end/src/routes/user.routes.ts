@@ -9,9 +9,9 @@ const userRoutes = Router();
 
 userRoutes.post("",createUserController);
 userRoutes.get("", listUserController)
-userRoutes.get("/:id", ensureAuthMiddleware ,retrieveUserController)
-userRoutes.delete("/:id",ensureAuthMiddleware, delteUserController)
-userRoutes.patch("/:id", ensureAuthMiddleware,updateUserController)
+userRoutes.get("/owner", ensureAuthMiddleware ,retrieveUserController)
+userRoutes.delete("/delete",ensureAuthMiddleware, delteUserController)
+userRoutes.patch("/update", ensureAuthMiddleware,updateUserController)
 
 
 

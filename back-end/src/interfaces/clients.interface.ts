@@ -1,7 +1,9 @@
+import { User } from "../entities/user.entity"
 export interface IClientsRequest{
     name: string,
     email: string,
     tel: string,
+    user: User
 }
 
 export interface IClientsResponse extends IClientsRequest {

@@ -17,7 +17,9 @@ const updateClientsService = async ({name, email, tel}: IClientUpdateRequest, id
         email: email ? email : findClient.email,
         tel : tel? tel : findClient.tel,
     })
-    const client = await clientRepository.findOneBy({id})
+    const client = await clientRepository.findOne({relations:{
+        user: true
+    }, where: {id} , })
     return client!
 }
 

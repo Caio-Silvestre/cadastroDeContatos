@@ -9,9 +9,11 @@ const deleteClientsService = async ( id: string) => {
     
     const findClient = await clientRepository.findOneBy({id})
     if (!findClient) {
+        
         throw new AppError("User not found",400)
     }
     if(!findClient.isActive) {
+
         throw new AppError("User is not active",400);
     }
     await clientRepository.update(id, {isActive: false})

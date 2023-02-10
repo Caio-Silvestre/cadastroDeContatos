@@ -14,6 +14,7 @@ export interface IClientUpdateRequest {
     name?: string
     email?: string
     tel?: string
+    isActive?: boolean
 }
 
 export interface IClientDelete {

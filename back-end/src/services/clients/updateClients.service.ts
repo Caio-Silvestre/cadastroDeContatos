@@ -5,7 +5,7 @@ import { IClientUpdateRequest } from "../../interfaces/clients.interface";
 
 // =========================IMPORTS=================================================
 
-const updateClientsService = async ({name, email, tel}: IClientUpdateRequest, id: string): Promise<Client> =>{
+const updateClientsService = async ({name, email, tel, isActive}: IClientUpdateRequest, id: string): Promise<Client> =>{
     const clientRepository = AppDataSource.getRepository(Client) 
     const findClient = await clientRepository.findOneBy({id})
     
@@ -16,6 +16,7 @@ const updateClientsService = async ({name, email, tel}: IClientUpdateRequest, id
         name: name? name : findClient.name,
         email: email ? email : findClient.email,
         tel : tel? tel : findClient.tel,
+        isActive: isActive? isActive : findClient.isActive
     })
     const client = await clientRepository.findOne({relations:{
         user: true

@@ -7,7 +7,7 @@ class Client {
     @PrimaryGeneratedColumn('uuid')
     id: string;	
 
-    @Column({length: 250, unique: true})
+    @Column({length: 250})
     name: string;
 
     @Column({length: 100})

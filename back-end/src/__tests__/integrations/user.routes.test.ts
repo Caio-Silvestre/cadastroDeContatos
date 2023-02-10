@@ -142,7 +142,6 @@ describe('Testando rotas de Client', () => {
           createdClients.push(result.body)
           createdClient = result.body
           clientId = result.body.id
-          console.log(result.body);
           
           
         })

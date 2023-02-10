@@ -11,8 +11,17 @@ const createClientsService = async ({name, email, tel}: IClientsRequest, userId:
     const clientRepository = AppDataSource.getRepository(Client)
     const userRepository = AppDataSource.getRepository(User)
     const user = await userRepository.findOneBy({id: userId})
-    const findName = await clientRepository.findOneBy({name})
-    if (findName){
+    // const findName = await clientRepository.findOneBy({name})
+
+    const clients = await clientRepository.find({ where: {user: {id:userId}},
+        relations: {
+            user: true
+        }
+    })
+    const findName = await clients.find(client => client.name == name)
+    console.log(findName);
+    
+    if (findName !== undefined) {
         throw new AppError("Name already registred", 400)
     }
     if(!name){

@@ -103,8 +103,8 @@ const userUpdateData: IUserUpdateRequest = {
 const clientData: IClientsRequest = {
     name: "Naruto Uzumaki",
     email: "uzuma@gmail.com2",
-    tel: "41 998741212",
-    user: createdUser
+    tel: "41 998741212"
+   
 }
 
 const clientUpdateData: IClientUpdateRequest = {
@@ -134,6 +134,8 @@ describe('Testando rotas de Client', () => {
     
     test('POST/client -> Criar um novo client',async () => {
         const result = await request(app).post('/clients').set("Authorization", `Bearer ${token}`).send(clientData)
+            console.log(createdUser);
+            
         
           expect(result.status).toBe(201)
           expect(result.body).toHaveProperty("id")
@@ -142,12 +144,15 @@ describe('Testando rotas de Client', () => {
           createdClients.push(result.body)
           createdClient = result.body
           clientId = result.body.id
+          console.log(result.body);
+          
           
           
         })
     test('GET/client -> Listar clients',async () => {
         const result = await request(app).get('/clients').set("Authorization", `Bearer ${token}`)
-    
+       
+        
         
         expect(result.body).toMatchObject(createdClients)
 
@@ -157,7 +162,6 @@ describe('Testando rotas de Client', () => {
 
     test('GET/client -> Informações do  client',async () => {
         const result = await request(app).get(`/clients/${clientId}`).set("Authorization", `Bearer ${token}`)
-        console.log(createdClient);
         
         expect(result.body).toMatchObject(createdClient)
 
@@ -176,7 +180,6 @@ describe('Testando rotas de Client', () => {
     
     test("DELETE/client -> Soft delete client",async () => {
         const result = await request(app).delete(`/clients/${clientId}`).set("Authorization", `Bearer ${token}`)
-        console.log(result);
         
         expect(result.status).toBe(204)
     })

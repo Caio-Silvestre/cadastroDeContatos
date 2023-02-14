@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "ts-node-dev --ignore-watch node_modules src/server.ts",
     "typeorm": "typeorm-ts-node-commonjs",
-    "test": "cross-env NODE_ENV=test SECRET_KEY=senhaFOrteDemais1234@@@ jest"
+    "test": "cross-env NODE_ENV=test SECRET_KEY=123secret jest"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",

@@ -12,6 +12,8 @@ const createClientsController = async (req:Request, res:Response) => {
  
     const client: IClientsRequest = req.body
     const userId: string = req.user.id
+    console.log("Passei control");
+    
     
     const createdClient = await createClientsService(client, userId)
     return res.status(201).json(createdClient)
@@ -20,6 +22,8 @@ const createClientsController = async (req:Request, res:Response) => {
 const listClientsController = async (req:Request, res:Response) => {
     const userId: string = req.user.id
     const clients = await lisClientsService(userId)
+
+    
     return res.json(clients)
 }
 

@@ -23,7 +23,7 @@ const createSessionsService =async ({email, password}: ISessionRequest): Promise
         name: user.name,
         id: user.id,
     },
-    "senhaFOrteDemais1234@@@",
+    process.env.SECRET_KEY,
     {
         expiresIn: '24h',
         subject: user.id

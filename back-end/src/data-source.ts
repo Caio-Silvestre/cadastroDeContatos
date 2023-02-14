@@ -12,11 +12,11 @@ const AppDataSource = new DataSource(
     }:
     {
     type: "postgres",
-    host: "localhost",
+    host: process.env.DB_HOST,
     port: 5432,
-    username: "caio_",
-    password: "CS1997",
-    database: "db_cadastro_clientes",
+    username: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB,
     synchronize: false,
     logging: true,
     entities: ['src/entities/*.ts'],

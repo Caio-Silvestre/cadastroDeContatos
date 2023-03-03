@@ -46,7 +46,6 @@ const HomeProvider = ({children}: HomeProviderProps)=>{
     const userToken = localStorage.getItem('token')
     const nav = useNavigate()
 
-
     
     async  function userInfos(){
         api.defaults.headers.common["Authorization"] = `Bearer ${userToken}`

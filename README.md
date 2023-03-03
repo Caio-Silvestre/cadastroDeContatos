@@ -8,10 +8,15 @@ Usuários diferentes podem registrar clientes com o mesmo nome, porém o mesmo u
 
 # COMO INICIAR O PROJETO 
 
+# Requisitos
+    # 1 => Ter node.js instalado versão 16 ou superior.
+    # 1.1 => Link para download (https://nodejs.org/en/download/)
+    # 2 => Ter yarn ou npm  instalado
+
 # 1 Ativar o servidor
     # 1 => Abri terminal intergrado da pasta /back-end
-    # 2 => Rodar no terminal integrado "yarn"
-    # 3 => Rodar no terminal integrado "yarn dev"
+    # 2 => Rodar no terminal integrado "yarn" ou "npm install"
+    # 3 => Rodar no terminal integrado "yarn dev" ou "npm run dev"
 
 # 2 Acesse o link do Vercel 
     # 1 => https://cc-roan.vercel.app/

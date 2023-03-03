@@ -7,7 +7,6 @@ import { User } from "../../entities/user.entity"
 
 const lisClientsService = async(id: string): Promise<Client[]> => {
     const clientRepository = AppDataSource.getRepository(Client)
-    console.log("passei aqui");
     
     const clients = await clientRepository.find({ where: {user: {id:id}},
         relations: {

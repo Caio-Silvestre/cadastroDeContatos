@@ -18,7 +18,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 
 function Home() {
-    const nav = useNavigate();
+    const nav = useNavigate(); 
     const dataRecovery = {isAcitve:true}
     const {clients, userData,onSubmitFunction, deleteClient, updateClient  } = useContext(HomeContext);
     // const userToken = localStorage.getItem('token')

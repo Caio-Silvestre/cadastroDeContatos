@@ -6,7 +6,7 @@ import userRoutes from './routes/user.routes';
 import clientsRoutes from './routes/client.routes';
 import sessionRoutes from './routes/session.routes';
 import cors from 'cors';
-// =========================IMPORTS=================================================
+// =====IMPORTS==========================================================================
 
 
 const app = express();

@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  postgres:
+    container_name: postgres_container
+    image: postgres:15.0
+    environment:
+      POSTGRES_DB: cadastroContato
+      POSTGRES_USER: cadastroContato
+      POSTGRES_PASSWORD: cadastroContato
+      PGDATA: /data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-U", "cadastroContato" ]
+      interval: 5s
+      retries: 5
+
+  back-end:
+    container_name: cadastro_contato
+    build:
+      context: .
+    ports:
+      - "3000:3000"
+    networks:
+      - postgres
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+networks:
+  postgres:
+    driver: bridge
+
+volumes:
+    postgres:

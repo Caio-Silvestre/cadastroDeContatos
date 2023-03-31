@@ -15,5 +15,6 @@ RUN yarn install
 # Bundle app source
 COPY . .
 
-EXPOSE 8080
-CMD [ "yarn", "dev" ]
+EXPOSE 3000
+
+CMD yarn typeorm migration:run -d src/data-source && yarn dev
